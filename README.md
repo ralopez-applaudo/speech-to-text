@@ -1,8 +1,8 @@
 # Build del contenedor
-docker build -t deepspeech-service .
+docker build -t whisper-large-service .
 
 # Run
-docker run -p 5000:5000 deepspeech-service
+docker run -p 5000:5000 whisper-large-service
 
 # Test with postman importing curl:
 ```
