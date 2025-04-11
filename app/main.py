@@ -7,7 +7,6 @@ import tempfile
 import os
 import wave
 from flask_cors import CORS
-from flask_cors import CORS
 
 model = whisper.load_model("large-v3")
 corrector = TextCorrector()
