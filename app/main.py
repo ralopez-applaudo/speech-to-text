@@ -8,7 +8,6 @@ model = whisper.load_model("large-v3")
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
-print("asdf")
 print(model.device)
 
 @app.route('/transcribe', methods=['POST'])
