@@ -6,12 +6,13 @@ import numpy as np
 import tempfile
 import os
 import wave
-
+from flask_cors import CORS
 
 model = whisper.load_model("large-v3")
 corrector = TextCorrector()
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
