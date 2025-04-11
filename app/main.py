@@ -1,18 +1,14 @@
 from flask import Flask, request, jsonify
-from pydub import AudioSegment
-from text_postprocess import TextCorrector
 import whisper
-import numpy as np
 import tempfile
 import os
-import wave
 from flask_cors import CORS
 
 model = whisper.load_model("large-v3")
-corrector = TextCorrector()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
+print(model.device)
 
 @app.route('/transcribe', methods=['POST'])
 def transcribe():
@@ -30,13 +26,11 @@ def transcribe():
     # Transcribe directamente con Whisper
     result = model.transcribe(temp_audio.name, language='en')
     raw_text = result['text']
-    corrected_text = corrector.correct(raw_text)
 
     os.remove(temp_audio.name)
 
     return jsonify({
-        'raw_transcription': raw_text.strip(),
-        'corrected_transcription': corrected_text
+        'raw_transcription': raw_text.strip()
     })
 
 if __name__ == '__main__':

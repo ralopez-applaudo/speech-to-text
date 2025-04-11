@@ -3,12 +3,3 @@ flask-cors
 
 # Whisper
 openai-whisper @ git+https://github.com/openai/whisper.git
-ffmpeg-python==0.2.0
-
-# Postprocesador con IA (corrección)
-transformers==4.39.1
-sentencepiece==0.1.99
-
-# Audio utils
-pydub==0.25.1
-numpy==1.24.4
